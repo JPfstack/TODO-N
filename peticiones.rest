@@ -1,0 +1,40 @@
+### USUARIOS: REGISTRAR NUEVO USUARIO
+POST http://localhost:3000/api/usuarios
+Content-Type: application/json
+
+{
+    "usuario": "chula",
+    "email": "chula@gmail.com",
+    "password": 1111
+}
+
+
+### USUARIOS: LOGIN 
+POST http://localhost:3000/api/usuarios/login
+Content-Type: application/json
+
+{
+    "usuario": "ana",
+    "password": "1111"
+}
+
+
+### USUARIOS: TOKEN
+POST http://localhost:3000/api/usuarios/token
+Content-Type: application/json
+
+{
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvSWQiOjcsImNyZWF0ZWRBdCI6MTYwMTg5NTk1MiwiZXhwaXJlZEF0IjoxNjAxODk2ODUyLCJpYXQiOjE2MDE4OTU5NTJ9.336h7VOQpeQpADnJidzImpzeb16Pbu7HvS50yyPDiQ0"
+}
+
+
+### TAREAS: REGISTRAR NUEVA TAREA
+POST http://localhost:3000/api/tareas
+Content-Type: application/json
+
+{
+    "fk_usuario": 8,
+    "titulo": "Sacar al perro",
+    "prioridad": "diaria",
+    "descripcion": "sacar al perro todos los dias"
+}
