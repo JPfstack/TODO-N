@@ -38,3 +38,12 @@ Content-Type: application/json
     "prioridad": "diaria",
     "descripcion": "sacar al perro todos los dias"
 }
+
+
+### TAREAS: OBTENER LISTA DE TAREAS DE UN USUARIO
+POST http://localhost:3000/api/tareas/id
+Content-Type: application/json
+
+{
+    "fk_usuario": 8
+}
