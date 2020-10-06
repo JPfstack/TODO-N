@@ -6,21 +6,33 @@ const moment = require('moment');
 const jwt = require('jsonwebtoken');
 
 
-const { registroUsuario, getIdByUser } = require('../../models/usuario');
+const { registroUsuario, getIdByUser, getAllUsers } = require('../../models/usuario');
 
 // PETICION PARA REGISTRAR NUEVO USUARIO
 router.post('/', async (req, res) => {
     try {
-        req.body.password = bcrypt.hashSync(req.body.password, 10);
-        const resultado = await registroUsuario(req.body);
-        console.log(resultado);
-        res.json(resultado)
+        const listaUsuarios = await getAllUsers();
+        console.log(listaUsuarios);
+        const listaFiltrada = listaUsuarios.filter(user => user.usuario === req.body.usuario)
+        console.log(listaFiltrada);
+
+        if (listaFiltrada.length != 0) {
+            res.json('Usuario existente')
+        } else {
+            req.body.password = bcrypt.hashSync(req.body.password, 10);
+            const resultado = await registroUsuario(req.body);
+            console.log(req.body);
+            res.json(resultado)
+        }
+
     }
+
     catch (error) {
         res.json({ error: error.message })
 
     }
 });
+
 
 // PETICION LOGIN MEDIANTE NOMBRE USUARIO
 router.post('/login', async (req, res) => {

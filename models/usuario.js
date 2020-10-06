@@ -30,5 +30,17 @@ function getIdByUser(pUsuario) {
     })
 };
 
-module.exports = { registroUsuario, getIdByUser }
+// METODO PARA OBTENER TODOS LOS USUARIOS
+function getAllUsers() {
+    return new Promise((resolve, reject) => {
+        db.query('SELECT * FROM todo.usuarios',
+            (error, result) => {
+                if (error) { return reject(error) }
+                else { (resolve(result)) }
+            }
+        )
+    })
+}
+
+module.exports = { registroUsuario, getIdByUser, getAllUsers }
 
